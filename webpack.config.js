@@ -14,8 +14,8 @@ module.exports = {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          loader: ['css-loader', 'sass-loader'],
-          publicPath: '/dist',
+          use: ['css-loader', 'sass-loader'],
+          publicPath: './dist',
         }),
       },
     ],
@@ -24,9 +24,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Perfect Website',
       template: './src/index.html',
-      minify: {
-        // collapseWhitespace: true,
-      },
+      hash: true,
     }),
     new ExtractTextPlugin({
       filename: 'app.css',
