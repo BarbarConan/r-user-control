@@ -5,8 +5,8 @@ const path = require('path');
 module.exports = {
   entry: './src/app.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'app.bundle.js',
+    path: path.join(__dirname, 'dist'),
+    filename: './app.bundle.js',
   },
   module: {
     rules: [
@@ -19,6 +19,11 @@ module.exports = {
         }),
       },
     ],
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    open: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
