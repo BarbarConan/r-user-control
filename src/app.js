@@ -1,6 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const css = require('./app.scss');
+require('./app.scss');
 
-ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('root'));
+const Component = () => (
+  <div>
+    <h1>Hello, world!</h1>
+    <input type="text" />
+  </div>
+);
+
+ReactDOM.render(<Component />, document.getElementById('root'));
