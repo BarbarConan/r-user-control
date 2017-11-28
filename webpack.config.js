@@ -18,12 +18,18 @@ module.exports = {
           publicPath: './dist',
         }),
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
     ],
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     open: true,
+    stats: 'errors-only',
   },
   plugins: [
     new HtmlWebpackPlugin({
