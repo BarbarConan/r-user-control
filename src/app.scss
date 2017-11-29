@@ -19,13 +19,20 @@ p {
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 0 0 1rem;
 }
 
 input {
   display: block;
   width: 100%;
-  margin: 0;
+  margin: 0 0 1rem;
   font: inherit;
+  padding: 0.45rem;
+}
+
+div.container {
+  max-width: 60rem;
+  padding: 0 1rem;
+  margin: auto;
 }

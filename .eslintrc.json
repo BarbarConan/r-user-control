@@ -4,8 +4,19 @@
     "browser": true,
     "jest": true
   },
+  "parser": "babel-eslint",
   "plugins": ["react", "prettier", "jsx-a11y", "import"],
   "rules": {
+    "jsx-a11y/label-has-for": [
+      2,
+      {
+        "components": ["Label"],
+        "required": {
+          "some": ["nesting", "id"]
+        },
+        "allowChildren": false
+      }
+    ],
     "no-console": "off",
     "react/jsx-filename-extension": "off",
     "prettier/prettier": [

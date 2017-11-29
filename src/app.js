@@ -5,8 +5,7 @@ import Login from './Components/Login';
 require('./app.scss');
 
 const Component = () => (
-  <div>
-    <h1>Hello, world!</h1>
+  <div className="container">
     <Login />
   </div>
 );
