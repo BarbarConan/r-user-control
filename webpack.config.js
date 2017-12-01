@@ -1,46 +1,63 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 const path = require('path');
 
+const isProd = process.env.NODE_ENV === 'production'; // true or false
+const cssDev = ['style-loader', 'css-loader', 'sass-loader'];
+const cssProd = ExtractTextPlugin.extract({
+  fallback: 'style-loader',
+  use: ['css-loader', 'sass-loader'],
+  publicPath: './dist',
+});
+const cssConfig = isProd ? cssProd : cssDev;
+
 module.exports = {
-  entry: './src/app.js',
+  entry: {
+    app: './src/app.js',
+  },
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: './app.bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js',
   },
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.js$/,
+        use: 'eslint-loader',
+        exclude: /node_modules/,
+      },
+      {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader'],
-          publicPath: './dist',
-        }),
+        use: cssConfig,
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: 'babel-loader',
       },
     ],
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    open: true,
-    stats: 'errors-only',
+    hot: true,
+    port: 9000,
+    // open: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Perfect Website',
-      template: './src/index.html',
+      title: 'Project Demo',
       hash: true,
+      template: './src/index.html',
     }),
     new ExtractTextPlugin({
       filename: 'app.css',
-      disable: false,
+      disable: !isProd,
       allChunks: true,
     }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
   ],
 };
