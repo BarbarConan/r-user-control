@@ -5,14 +5,16 @@
       "lastName": "Keskin",
       "email": "msenolkeskin@gmail.com",
       "id": 0,
-      "pass": "123456"
+      "pass": "123456",
+      "accessType": "0"
     },
     {
       "name": "Another",
       "lastName": "User",
       "email": "another@gmail.com",
       "id": 1,
-      "pass": "123456"
+      "pass": "123456",
+      "accessType": "0"
     }
   ]
 }

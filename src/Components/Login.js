@@ -10,10 +10,11 @@ class Login extends React.Component {
   }
 
   render() {
-    const title = `Please login ${this.state.formIsValid}`;
     return (
       <div>
-        <h1>{title}</h1>
+        <h1>
+          Please login <code>{this.state.formIsValid.toString()}</code>
+        </h1>
         <label htmlFor="userName">User name</label>
         <input
           type="text"
