@@ -4,10 +4,10 @@ const webpack = require('webpack');
 const path = require('path');
 
 const isProd = process.env.NODE_ENV === 'production'; // true or false
-const cssDev = ['style-loader', 'css-loader', 'sass-loader'];
+const cssDev = ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader'];
 const cssProd = ExtractTextPlugin.extract({
   fallback: 'style-loader',
-  use: ['css-loader', 'sass-loader'],
+  use: ['css-loader', 'postcss-loader', 'sass-loader'],
   publicPath: './dist',
 });
 const cssConfig = isProd ? cssProd : cssDev;
@@ -38,15 +38,17 @@ module.exports = {
         use: 'babel-loader',
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]?[hash:6]',
-              outputPath: '/images/',
+              outputPath: 'images/',
+              publicPath: '/',
             },
           },
+          { loader: 'image-webpack-loader' },
         ],
       },
     ],
