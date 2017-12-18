@@ -7,6 +7,15 @@ class Login extends React.Component {
       formIsValid: false,
     };
     this.submitHandle = evt => console.log(evt);
+    this.inputChange = this.inputChange.bind(this);
+  }
+
+  inputChange(evt) {
+    const val = evt.target.value;
+
+    this.setState({
+      formIsValid: val.length > 0,
+    });
   }
 
   render() {
@@ -21,6 +30,7 @@ class Login extends React.Component {
           placeholder="Type your user name"
           id="userName"
           onFocus={e => e.target.select()}
+          onChange={this.inputChange}
         />
         <label htmlFor="password">Password</label>
         <input
@@ -28,6 +38,7 @@ class Login extends React.Component {
           placeholder="Password"
           id="password"
           onFocus={e => e.target.select()}
+          onChange={this.inputChange}
         />
         <button onClick={this.submitHandle} disabled={!this.state.formIsValid}>
           Submit
