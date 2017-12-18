@@ -11,6 +11,7 @@ body {
   font-family: sans-serif;
   margin: 0;
   color: #444;
+  background: url(./images/mj.jpg) no-repeat center center;
 }
 
 p {
@@ -53,6 +54,7 @@ button {
   padding: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  // prettier-ignore
   appearance: none;
   border: 0;
   border-radius: 0;
@@ -108,4 +110,12 @@ div.container {
 label {
   display: block;
   margin-bottom: 0.45rem;
+}
+
+.body-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.4;
+  z-index: -1;
 }

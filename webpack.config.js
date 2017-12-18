@@ -37,6 +37,18 @@ module.exports = {
         exclude: /node_modules/,
         use: 'babel-loader',
       },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]?[hash:6]',
+              outputPath: '/images/',
+            },
+          },
+        ],
+      },
     ],
   },
   devServer: {
