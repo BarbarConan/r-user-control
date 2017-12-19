@@ -104,6 +104,12 @@ textarea {
   cursor: pointer;
   background-color: #1779ba;
   color: #fefefe;
+
+  &:disabled {
+    background-color: #cecece;
+    color: #444;
+    cursor: not-allowed;
+  }
 }
 
 div.container {

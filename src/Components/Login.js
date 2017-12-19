@@ -40,7 +40,7 @@ class Login extends React.Component {
           onFocus={e => e.target.select()}
           onChange={this.inputChange}
         />
-        <button onClick={this.submitHandle} disabled={!this.state.formIsValid}>
+        <button className="button" onClick={this.submitHandle} disabled={!this.state.formIsValid}>
           Submit
         </button>
       </div>
