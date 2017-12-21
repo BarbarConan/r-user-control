@@ -20,7 +20,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1>
           Please login <code>{this.state.formIsValid.toString()}</code>
         </h1>
@@ -43,7 +43,7 @@ class Login extends React.Component {
         <button className="button" onClick={this.submitHandle} disabled={!this.state.formIsValid}>
           Submit
         </button>
-      </div>
+      </React.Fragment>
     );
   }
 }

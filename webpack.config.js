@@ -30,6 +30,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: cssConfig,
       },
       {
@@ -38,7 +39,8 @@ module.exports = {
         use: 'babel-loader',
       },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(gif|png|jpe?g|svg|ico)$/i,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'file-loader',
@@ -62,6 +64,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: 'favicon.ico',
       title: 'Project Demo',
       hash: true,
       template: './src/index.html',
