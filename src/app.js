@@ -7,6 +7,7 @@ import css from './app.scss';
 
 const Component = () => (
   <div className="container">
+    <img className="body-img" src="/images/mj.jpg" alt="" />
     <Login />
   </div>
 );
