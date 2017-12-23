@@ -1,9 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Form = props => <input type={props.type} />;
+const CreateForm = props => <input type={props.type} />;
 
-Form.propType = {
-  type: PropTypes.string.isRequired,
+CreateForm.propTypes = {
+  type: PropTypes.string,
 };
 
-export default Form;
+CreateForm.defaultProps = {
+  type: 'text',
+};
+
+export default CreateForm;

@@ -28,6 +28,7 @@ class Login extends React.Component {
         </h1>
         <form data-validate>
           <CreateForm type="tel" />
+
           <label htmlFor="userName">User name</label>
           <input
             type="text"
