@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CreateForm from '../Helpers/FormValidation';
+import CreateForm from '../Helpers/CreateFormElements';
 
 class Login extends React.Component {
   constructor() {
@@ -8,12 +8,20 @@ class Login extends React.Component {
     this.state = {
       formIsValid: false,
     };
-    this.submitHandle = evt => console.log(evt);
+
     this.inputChange = this.inputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(evt) {
+    console.log(evt);
+
+    if (!this.state.formIsValid) evt.preventDefault();
   }
 
   inputChange(evt) {
     const val = evt.target.value;
+    console.log(evt);
 
     this.setState({
       formIsValid: val.length > 0,
@@ -26,28 +34,25 @@ class Login extends React.Component {
         <h1>
           Please login <code>{this.state.formIsValid.toString()}</code>
         </h1>
-        <form data-validate>
-          <CreateForm type="tel" />
-
-          <label htmlFor="userName">User name</label>
-          <input
-            type="text"
-            placeholder="Type your user name"
+        <form data-validate onSubmit={this.handleSubmit}>
+          <CreateForm
+            name="username"
             id="userName"
-            onFocus={e => e.target.select()}
-            onChange={this.inputChange}
-            required
+            label="User Name"
+            placeholder="Type your user name"
+            onclick={this.inputChange}
+            onchange={this.inputChange}
           />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            placeholder="Password"
+          <CreateForm
+            name="password"
             id="password"
-            onFocus={e => e.target.select()}
-            onChange={this.inputChange}
-            required
+            label="Password"
+            placeholder="Type your password"
+            type="password"
+            onclick={this.inputChange}
+            onchange={this.inputChange}
           />
-          <button className="button" onClick={this.submitHandle} disabled={!this.state.formIsValid}>
+          <button className="button" disabled={!this.state.formIsValid}>
             Submit
           </button>
         </form>
