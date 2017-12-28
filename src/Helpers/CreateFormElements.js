@@ -16,7 +16,13 @@ const CreateForm = props => {
   return (
     <div>
       <MakeLabel id={id} label={label} />
-      <input name={name} id={id} type={type} onClick={onclick} onChange={onchange} />
+      <input
+        name={name}
+        id={id}
+        type={type}
+        onClick={e => onclick(e)}
+        onChange={e => onchange(e)}
+      />
     </div>
   );
 };
